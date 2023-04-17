@@ -3,3 +3,17 @@
 Zum Modul Web Technologien gibt es ein begleitendes Projekt. Im Rahmen dieses Projekts werden wir von Veranstaltung zu Veranstaltung ein Projekt sukzessive weiter entwickeln und uns im Rahmen der Veranstaltung den Fortschritt anschauen, Code Reviews machen und Entwicklungsschritte vorstellen und diskutieren.
 
 Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhaltlich befassen wir uns mit der Entwicklung einer kleinen Web-Anwendung für die Erprobung von Augmented Reality im Browser. Das wird toll!
+
+## Installation
+
+Für die Installation aller unten aufgeführten Module wechseln sie in den Root-Ordner und geben
+````
+npm i 
+````
+ins Terminal ein.
+
+### Verwendete Module in diesem Projekt
+* [React](https://react.dev/learn/start-a-new-react-project)
+  * Verwendete Script-Sprache : TypeScript
+  * ESLint
+  * CSS/SASS Framework: Bootstrap
