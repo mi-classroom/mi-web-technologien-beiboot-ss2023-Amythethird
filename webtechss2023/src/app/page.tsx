@@ -1,105 +1,42 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+"use client";
 import styles from './page.module.css'
+import VisionCamera from "./components/camera_module/camera_module";
+export * from "./components/camera_module/camera_module";
+import {useState} from "react";
 
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
 
+    const [state, setState] = useState(false);
+    function handleClick() {
 
-     {/* <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+        setState(current => !current);
+        console.log(state)
+    }
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    return (
+            <main>
+                <div className={"bg-dark text-secondary px-4 py-5 text-center"}>
+                    <div className={"py-5"}>
+                        <h1 className={"display-5 fw-bold text-white"}>Herzlich Willkommen, auf ARlebnispfade Oberbergischer Kreis</h1>
+                        <div className={"col-lg-6 mx-auto"}>
+                            <p className={"fs-5 mb-4"}>Hier können Sie aktuell ein Objekt mit Ihrer Kamera anvisieren und Geometrische Objekte darauf Projezieren.
+                                Mit einem Click auf den Button startet Ihre Smartphone-Kamera und analysiert das Object. Danach können Sie über das Auswahlmenü einfache Objekte projezieren.
+                            </p>
+                            <div className={"d-grid gap-2 d-sm-flex justify-content-sm-center"}>
+                                <button type="button"
+                                        className={"btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"} onClick={handleClick}>{state ? "Kamera schließen" : "Kamera starten"}
+                                </button>
+                                <button type="button" className={"btn btn-outline-light btn-lg px-4"}>weitere Informationen</button>
+                            </div>
+                        </div>
+                    </div>
+                    <>
+                        {state && <VisionCamera/>}
+                    </>
+                </div>
+            </main>
 
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+    )
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>*/}
-    </main>
-  )
 }
