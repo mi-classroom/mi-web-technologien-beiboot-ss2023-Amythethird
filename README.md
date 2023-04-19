@@ -17,3 +17,5 @@ ins Terminal ein.
   * Verwendete Script-Sprache : TypeScript
   * ESLint
   * CSS/SASS Framework: Bootstrap
+  * React Webcam als Kamera Modul für React Applicationen
+  * 
