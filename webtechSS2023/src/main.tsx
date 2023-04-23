@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import App from './App.tsx'
 import './index.css'
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
