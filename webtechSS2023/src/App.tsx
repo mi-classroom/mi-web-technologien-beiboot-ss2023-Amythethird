@@ -1,7 +1,6 @@
 import './App.css'
-import React, {useState} from "react";
-import { ArToolkitProfile, ArToolkitSource, ArToolkitContext, ArMarkerControls} from 'arjs/three.js/build/ar-threex.js';
-import * as THREE from 'three';
+import  {useState} from "react";
+
 
 function App() {
     const [cameraOn, setCameraOn] = useState(false);
@@ -12,13 +11,6 @@ function App() {
 
     return (
        <main className={"container-lg"}>
-           <a-scene
-               vr-mode-ui="enabled: false"
-               embedded
-               arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-               <a-entity gltf-model="assets/magnemite/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: 12.489820; latitude: 41.892590;" animation-mixer/>
-               <a-camera gps-camera rotation-reader></a-camera>
-           </a-scene>
            {/*<button className="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                Close
@@ -48,10 +40,10 @@ function App() {
                </div>
            </div>*/}
            <button className="btn btn-primary" type="button" data-bs-toggle=""
-                   data-bs-target="" aria-controls="">
+                   data-bs-target="" aria-controls="" onClick={openCamera}>
                Open Kamera
            </button>
-
+           {cameraOn}
 
 
        </main>
