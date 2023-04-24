@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://mi-classroom.github.io/mi-web-technologien-beiboot-ss2023-Amythethird/",
   "scripts": {
     "dev": "vite",
     "predeploy" : "npm run build",
