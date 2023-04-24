@@ -1,70 +1,60 @@
 import './App.css'
-// @ts-ignore
-import { ArToolkitSource, ArToolkitContext, ArMarkerControls} from '@ar-js-org/ar.js/three.js/build/ar-threex.js';
-// @ts-ignore
+import React, {useState} from "react";
+import { ArToolkitProfile, ArToolkitSource, ArToolkitContext, ArMarkerControls} from 'arjs/three.js/build/ar-threex.js';
 import * as THREE from 'three';
-import {useEffect} from "react";
 
 function App() {
-    const scene = new THREE.Scene()
-    const camera = new THREE.Camera()
-    // @ts-ignore
-    let renderer = null
-    const geometry = new THREE.BoxGeometry(1,1,1);
-    const material = new THREE.MeshBasicMaterial({
-        transparent: true,
-        opacity:0.5,
-        side: THREE.DoubleSide
-    });
-
-    const cube = new THREE.Mesh(geometry, material);
-    const arToolkitSrc = new ArToolkitSource({
-        sourceType: 'webcam'
-    })
-    const arToolkitCtx = new ArToolkitContext({
-        cameraParametersUrl: 'src/assets/data/camera_para.dat',
-        detectionMode: 'color_and_matrix',
-    })
-    new ArMarkerControls(arToolkitCtx,camera,{
-        type:'pattern',
-        patternUrl:'src/assets/data/marker.patt',
-        changeMatrixMode:'cameraTransformMatrix'
-    })
-
-    function animate() {
-        requestAnimationFrame(animate);
-        arToolkitCtx.update(arToolkitSrc.domElement)
-        scene.visible = camera.visible
-        // @ts-ignore
-        renderer.render(scene,camera);
+    const [cameraOn, setCameraOn] = useState(false);
+    function openCamera(){
+        setCameraOn(current => !current)
     }
 
-    useEffect(() => {
-        renderer = new THREE.WebGLRenderer({
-            antialias:true,
-            alpha:true
-        });
-        cube.position.y = geometry.parameters.height / 2
-        scene.visible = false
-        arToolkitSrc.init(() => {
-            setTimeout(() => {
-                arToolkitSrc.onResizeElement()
-                // @ts-ignore
-                arToolkitSrc.copyElementSizeTo(renderer.domElement)
-            },2000)
-        })
-        arToolkitCtx.init(function onCompleted() {
-            camera.projectionMatrix.copy(arToolkitCtx.getProjectionMatrix());
-        });
-        scene.add(camera)
-        scene.add(cube);
-        animate()
-    })
 
     return (
-       <div>
+       <main className={"container-lg"}>
+           <a-scene
+               vr-mode-ui="enabled: false"
+               embedded
+               arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+               <a-entity gltf-model="assets/magnemite/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: 12.489820; latitude: 41.892590;" animation-mixer/>
+               <a-camera gps-camera rotation-reader></a-camera>
+           </a-scene>
+           {/*<button className="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                   data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+               Close
+           </button>
 
-       </div>
+           <div className="offcanvas offcanvas-start show" tabIndex="1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+               <div className="offcanvas-header">
+                   <h5 className="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                   <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+               </div>
+               <div className="offcanvas-body">
+                   <div>
+                       Some text as placeholder. In real life you can have the elements you have chosen. Like, text,
+                       images, lists, etc.
+                   </div>
+                   <div className="dropdown mt-3">
+                       <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                           Dropdown button
+                       </button>
+                       <ul className="dropdown-menu">
+                           <li><a className="dropdown-item" href="#">Action</a></li>
+                           <li><a className="dropdown-item" href="#">Another action</a></li>
+                           <li><a className="dropdown-item" href="#">Something else here</a></li>
+                       </ul>
+                   </div>
+               </div>
+           </div>*/}
+           <button className="btn btn-primary" type="button" data-bs-toggle=""
+                   data-bs-target="" aria-controls="">
+               Open Kamera
+           </button>
+
+
+
+       </main>
     )
 }
 export default App
