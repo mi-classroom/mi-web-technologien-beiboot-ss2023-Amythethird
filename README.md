@@ -4,13 +4,17 @@ Zum Modul Web Technologien gibt es ein begleitendes Projekt. Im Rahmen dieses Pr
 
 Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhaltlich befassen wir uns mit der Entwicklung einer kleinen Web-Anwendung für die Erprobung von Augmented Reality im Browser. Das wird toll!
 
+## Live ansicht
+Der Service wurde auf www.web102.in-p.de/dwebtech deployt.
+
 ## Installation
 
-Für die Installation aller unten aufgeführten Module wechseln sie in den Root-Ordner und geben
+Für die Installation aller unten aufgeführten Module wechseln sie in den Root-Ordner .webtech* und geben
 ````
 npm i 
 ````
 ins Terminal ein.
+
 
 ### Verwendete Module in diesem Projekt
 * [React](https://react.dev/learn/start-a-new-react-project)
