@@ -1,0 +1,32 @@
+.navbar{
+  margin-top: auto;
+  nav{
+    display: flex;
+    flex-direction: row;
+
+    li{
+      width: 80px;
+      background-color: white;
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+    }:first-child{
+      border-radius: 8px 0 0 8px;
+    }:last-child{
+        border-radius: 0 8px 8px 0;
+    }
+     li:focus{
+       background: greenyellow;
+     }
+  }
+}
+
+/*
+left: 50%;
+        -webkit-transform: translateX(-50%);
+-ms-transform: translateX(-50%);
+transform: translateX(-50%);*/

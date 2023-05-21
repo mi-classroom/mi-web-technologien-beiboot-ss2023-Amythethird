@@ -6,6 +6,6 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
   },
-  base: '/dwebtech/',
+  //base: '',
   plugins: [react()],
 })
