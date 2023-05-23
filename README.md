@@ -29,3 +29,8 @@ ins Terminal ein.
 | 1     | Die Web-Application sollte zu begin in React-(Native) geschrieben werden. Aufgrund von immer größeren Problemen, die im zusammenhang mit Next.js standen habe ich die Applikation auf React + Vite umgestellt (siehe ADR 1 & 5). <br>Nach etlichen stunden des Implementierens des AR.Js Modul konnte gestern zumindest die Marker-Based und Location Based Variante in den Code eingebettet werden. Wenn weitere, darauf aufbauende Issues folgen, kann auch das Design angepasst werden. | Alle | 17 St. | Es kann sein das, dass Frontend-Framework noch auf ein anderes geändert wird.
 |   |                                                                                                                                                                                                                                                                                                                                                                                                               |     |      |                                 |
 |       |                                                                                                                                                                                                                                                                                                                                                                                                                |     |      |                                 |
+
+
+## ToDo
+
+[ ] Landing Page in neuem Design
