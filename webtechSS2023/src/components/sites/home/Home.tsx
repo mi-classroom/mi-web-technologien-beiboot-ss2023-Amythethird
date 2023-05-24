@@ -1,7 +1,5 @@
 import './style.css'
 import Navbar from "../../navbar/Navbar.tsx";
-import Webar from "../../webAR_markerBased/webar.tsx";
-
 function Home() {
 
     return (
@@ -12,7 +10,6 @@ function Home() {
                 <li>WebAR Location Based</li>
                 <li>WebAR Marker Based</li>
             </ul>
-            <Webar/>
             <Navbar/>
         </main>
     )

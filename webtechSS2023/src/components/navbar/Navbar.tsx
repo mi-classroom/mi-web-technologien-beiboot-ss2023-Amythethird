@@ -1,6 +1,7 @@
 import './style.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCameraRotate, faCubes, faLocationDot, faQrcode} from '@fortawesome/free-solid-svg-icons'
+import {Link} from "react-router-dom";
 
 function Navbar() {
 
@@ -8,18 +9,16 @@ function Navbar() {
         <div className={"wrapper navbar"}>
             <nav>
                 <li>
-                    <a
-                        href={"#"} aria-label={"location based WebAR"}
-                    >
+                    <Link to={"/marker"} aria-label={"location based Webar"}>
                         <FontAwesomeIcon
-                            icon={faLocationDot}
-                            size={"lg"}
-                            style={{color: "black"}}
+                        icon={faLocationDot}
+                        size={"lg"}
+                        style={{color: "black"}}
                         />
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href={"#"} aria-label={"Marker based WebAR"}>
+                    <a href={"#"} aria-label={"Marker based Webar"}>
                         <FontAwesomeIcon
                             icon={faQrcode}
                             size={"lg"}
