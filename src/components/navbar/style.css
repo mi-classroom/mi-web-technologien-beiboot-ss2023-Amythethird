@@ -1,0 +1,40 @@
+.navbar {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar nav {
+  display: flex;
+  flex-direction: row;
+}
+.navbar nav li {
+  width: 80px;
+  background-color: white;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+.navbar nav :first-child {
+  border-radius: 8px 0 0 8px;
+}
+.navbar nav :last-child {
+  border-radius: 0 8px 8px 0;
+}
+.navbar nav li:focus {
+  background: greenyellow;
+}
+
+/*
+left: 50%;
+        -webkit-transform: translateX(-50%);
+-ms-transform: translateX(-50%);
+transform: translateX(-50%);*/
+
+/*# sourceMappingURL=style.css.map */
