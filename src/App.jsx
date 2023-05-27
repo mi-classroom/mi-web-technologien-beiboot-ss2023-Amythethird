@@ -19,7 +19,6 @@ function App() {
                 <Route path={"/dwebtech/location"} element={<WebAR_locationBased/>}/>
         </Routes>
     </Suspense>
-        <Navbar/>
     </>
   )
 }

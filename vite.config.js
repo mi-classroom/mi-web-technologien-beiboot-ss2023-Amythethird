@@ -8,4 +8,7 @@ export default defineConfig({
   },
   base: '/dwebtech',
   plugins: [react()],
+  server: {
+    host: "0.0.0.0"
+  }
 })

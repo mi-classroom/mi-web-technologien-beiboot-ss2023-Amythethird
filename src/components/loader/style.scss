@@ -1,6 +1,7 @@
 .loading {
   $colors: #7ef9ff, #89cff0, #4682b4, #0f52ba, #000080;
   display: flex;
+  justify-content: center;
 
   .dot {
     position: relative;

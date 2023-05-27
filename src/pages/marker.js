@@ -16,18 +16,11 @@ const renderer = new THREE.WebGLRenderer({
     alpha:true
 });
 
-
+document.body.appendChild( renderer.domElement );
 renderer.setSize( window.innerWidth, window.innerHeight );
-
-
-window.addEventListener("DOMContentLoaded", (event) => {
-    document.getElementById("marker").appendChild( renderer.domElement );
-});
-
 var arToolkitSource = new ArToolkitSource({
     sourceType: "webcam",
 });
-
 arToolkitSource.init(function (){
     setTimeout(function (){
         arToolkitSource.onResizeElement();
@@ -57,7 +50,7 @@ scene.visible = false;
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 const material = new THREE.MeshNormalMaterial( {
     transparent: true,
-    opacity: 0.8,
+    opacity: 0.5,
     side: THREE.DoubleSide
 
 });

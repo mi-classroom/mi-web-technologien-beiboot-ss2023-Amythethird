@@ -1,5 +1,6 @@
 .loading {
   display: flex;
+  justify-content: center;
 }
 .loading .dot {
   position: relative;
