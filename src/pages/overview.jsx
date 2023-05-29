@@ -8,8 +8,8 @@ function OverView() {
     const navigate = useNavigate();
 
     return (
-        <main>
-                <h1>Hi</h1>
+        <main className={"overview"}>
+            <h1>Hi</h1>
             <FontAwesomeIcon icon={faPenNib} />
             <FontAwesomeIcon icon={faEnvelope} />
             <Navbar/>

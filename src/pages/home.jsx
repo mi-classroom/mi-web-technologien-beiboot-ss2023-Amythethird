@@ -6,7 +6,7 @@ function Home() {
     return (
         <>
             <main>
-                <div className={"container landing"}>
+                <div className={" landing"}>
                     <video id={"backgroundVideoLanding"} aria-label={"Natur Video ARLebnispfade"} autoPlay muted loop>
                         <source src={"./landing_page.mp4"}/>
                     </video>
