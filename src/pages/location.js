@@ -21,7 +21,7 @@ import * as THREEx from '@ar-js-org/ar.js/three.js/build/ar-threex-location-only
 
      const box = new THREE.Mesh(geom, mtl);
 
-     arjs.add(box, longitute, latitude + 0.005);
+     arjs.add(box, longitute, latitude - 0.005);
     arjs.startGps();
     requestAnimationFrame(render);
 

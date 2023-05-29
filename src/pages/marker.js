@@ -51,7 +51,7 @@ var arMarkerControls = new ArMarkerControls(arToolkitContext, camera,
 
 scene.visible = false;
 
-const geometry = new THREE.BoxGeometry( 2, 2, 2 );
+const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 const material = new THREE.MeshNormalMaterial( {
     transparent: true,
     opacity: 0.5,
@@ -87,6 +87,9 @@ function animate() {
     arToolkitContext.update(arToolkitSource.domElement);
     scene.visible = camera.visible;
     renderer.render( scene, camera );
+    if(!scene.visible){
+        sound.stop()
+    }
 
 }
 export function stop(){
