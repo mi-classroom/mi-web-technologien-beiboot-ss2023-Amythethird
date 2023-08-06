@@ -1,6 +1,6 @@
 import './style.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCameraRotate, faCubes, faLocationDot, faQrcode} from '@fortawesome/free-solid-svg-icons'
+import {faCirclePlay, faCubes, faLocationDot, faQrcode} from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 
@@ -41,7 +41,7 @@ function Navbar({setName, setSoundSettings}) {
                 <li onClick={handleSoundSettings}>
                     <a href={"#"} aria-label={"Kamera Wechseln"} >
                         <FontAwesomeIcon
-                            icon={faCameraRotate}
+                            icon={faCirclePlay}
                             size={"lg"}
                             style={{color: "black"}}
                         />

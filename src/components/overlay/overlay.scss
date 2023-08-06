@@ -1,0 +1,16 @@
+.overlay{
+  margin-bottom: auto;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  button{
+    background-color: inherit;
+    border: none;
+  }
+  p{
+    max-width: 200px;
+    text-align: left;
+  }
+}
