@@ -1,12 +1,23 @@
 import './style.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCameraRotate, faCubes, faLocationDot, faQrcode} from '@fortawesome/free-solid-svg-icons'
+import {faCirclePlay, faCubes, faLocationDot, faQrcode} from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
 
-function Navbar() {
+function Navbar({setName, setSoundSettings}) {
+    const [select, setSelect] = useState(true)
+    const [soundSettings, setSoundSetting] = useState(true)
+   function handleClick(){
+        setSelect(current => !current)
+        setName(select);
+    }
+    function handleSoundSettings(){
+        setSoundSetting(current => !current)
+        setSoundSettings(soundSettings);
+    }
 
     return (
-        <div className={"wrapper navbar"}>
+        <div className={"navbarT"}>
             <nav>
                 <li>
                     <Link to={"/dwebtech/location"} aria-label={"location based Webar"}>
@@ -27,16 +38,16 @@ function Navbar() {
                     </Link>
 
                 </li>
-                <li>
-                    <a href={"#"} aria-label={"Kamera Wechseln"}>
+                <li onClick={handleSoundSettings}>
+                    <a href={"#"} aria-label={"Kamera Wechseln"} >
                         <FontAwesomeIcon
-                            icon={faCameraRotate}
+                            icon={faCirclePlay}
                             size={"lg"}
                             style={{color: "black"}}
                         />
                     </a>
                 </li>
-                <li>
+                <li  onClick={handleClick}>
                     <a href={"#"} aria-label={"Models"}>
                         <FontAwesomeIcon
                             icon={faCubes}

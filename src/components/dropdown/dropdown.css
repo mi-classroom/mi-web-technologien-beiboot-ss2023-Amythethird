@@ -1,0 +1,15 @@
+.audio-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.audio-buttons button {
+  background-color: white;
+  color: black;
+}
+
+/*# sourceMappingURL=dropdown.css.map */

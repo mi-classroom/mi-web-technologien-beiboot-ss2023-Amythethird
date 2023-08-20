@@ -1,0 +1,46 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+}
+.navbar li {
+  width: 65px;
+  height: 65px;
+  background-color: white;
+  list-style: none;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.navbar li:first-child {
+  border-radius: 8px 0 0 8px;
+}
+.navbar li:last-child {
+  border-radius: 0 8px 8px 0;
+}
+.navbar li :focus-visible {
+  background-color: black;
+}
+.navbar .sub-menu {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  bottom: 50px;
+  padding: 12px 0;
+  z-index: 1;
+  border-radius: 0;
+}
+.navbar .sub-menu li {
+  border-radius: 0;
+}
+
+.hide {
+  display: none;
+}
+
+/*# sourceMappingURL=test.css.map */

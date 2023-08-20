@@ -1,78 +1,84 @@
-// Landing Page
+@forward "homescreen/homescreen";
+@forward "overview/overview";
+@forward "pokeAround/pokeAround";
+@forward "../components/overlay/overlay";
+@forward "../components/button/button";
+@forward "../components/locations/locations";
+@forward "../styles/colors";
+@forward "../styles/typographie";
+:root {
+  --button-background: dodgerblue;
+  --button-color: white;
 
-.landing{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100vw;
+  --dropdown-highlight: dodgerblue;
+  --dropdown-width: 160px;
+  --dropdown-background: white;
+  --dropdown-color: black;
+}
+
+.fadeIn {
+  animation: 0.9s fadeIn forwards;
+}
+
+.fadeOut {
+  animation: 0.9s fadeOut forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+.slideIn {
+  animation: 0.9s fadeIn forwards;
+}
+
+.slideOut {
+  animation: 0.9s fadeOut forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+.compbody{
   height: 100vh;
-  align-content: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.45);
 
-  button{
-    align-self: center;
-    background-color: rgba(255, 255, 255, 0.32);
-    border: 1px solid white;
-  }
-
-
-  h2{
-    text-align: center;
-    align-self: center;
-    color: white;
-    font-weight: bold;
-    margin: 1rem;
-  }
-
-  video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-
-  }
 }
 
-
-
-//Home
-
-
-
-.home{
-  background-color: dimgrey;
-  justify-self: start;
-  h1 , p{
-    text-align: left;
-    color: white;
-    font-weight: bold;
-  }
-
-  ul, li{
-    list-style: none;
-    color: white;
-    text-align: left;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-
-
-video {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-
-// Location
 
