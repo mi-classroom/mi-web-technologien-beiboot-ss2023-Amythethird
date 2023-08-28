@@ -12,7 +12,7 @@ function OverView({ onBackClick }) {
             <main className={"overview"}>
                 {/*<button onClick={onBackClick}>Zurück</button>*/}
                 <Button text={`Ich will nur ein bisschen`} option={"stöbern"} className={"big"} size={"xl"} path={"/dwebtech/stöbern"}/>
-                <Button text={`Ich will die ARlebnisse`} option={"nutzen"} className={"big orange"} size={"xl"}/>
+                <Button text={`Ich will die ARlebnisse`} option={"nutzen"} className={"big orange"} size={"xl"} path={"/dwebtech/nutzen"}/>
             </main>
         </>
 
