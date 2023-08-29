@@ -1,9 +1,11 @@
 @forward "homescreen/homescreen";
 @forward "overview/overview";
 @forward "pokeAround/pokeAround";
+@forward "ARLebnisse/select";
 @forward "../components/overlay/overlay";
 @forward "../components/button/button";
 @forward "../components/locations/locations";
+@forward "Informations/informations";
 @forward "../styles/colors";
 @forward "../styles/typographie";
 :root {
@@ -14,6 +16,11 @@
   --dropdown-width: 160px;
   --dropdown-background: white;
   --dropdown-color: black;
+}
+
+body{
+  font-family: "Source Sans 3", sans-serif;
+  background-color: white;
 }
 
 .fadeIn {

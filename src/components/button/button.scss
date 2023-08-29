@@ -10,6 +10,9 @@
   gap: 10px;
   margin: 15px;
   font-size: 20px;
+  img{
+    text-align: center;
+  }
   span{
     font-weight: bold;
     font-size: 32px;
@@ -18,4 +21,26 @@
 
 .orange{
   background-color: colors.$highlight ;
+}
+
+.veryBig{
+  width: 328px;
+  height: auto;
+  top: 1104px;
+  left: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  gap: 10px;
+  margin: 15px;
+  font-size: 20px;
+  img{
+    text-align: center;
+  }
+  span{
+    font-weight: bold;
+    font-size: 32px;
+  }
+  display: flex;
+  flex-direction: column;
 }

@@ -1,0 +1,141 @@
+[
+  {
+    "city": "Wiehl",
+    "Federal_State_short": "NRW",
+    "Federal_State_long": "Nordrhein Westphalen",
+    "state": "DE",
+    "postalCode": "51674",
+    "bgImg": "/bergisches_waldbroel-4351265.jpg",
+    "locations": [
+      { "Street": "Brucher Straße",
+        "HouseNumber": "45",
+        "LocationName": "Wiehlpark",
+        "geoData": [
+          {
+            "lat":  50.9469101  ,
+            "lng": 7.5428709
+          }
+        ]
+      },
+      { "Street": "Mühlenstraße",
+        "HouseNumber": "23",
+        "LocationName": "Wasser Welt",
+
+        "geoData": [
+          {
+            "lat":  50.947190  ,
+            "lng": 7.554790
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "city": "Marienheide",
+    "Federal_State_short": "NRW",
+    "Federal_State_long": "Nordrhein Westphalen",
+    "state": "DE",
+    "postalCode": "51709",
+    "bgImg": "/unnenbergturm.jpg",
+    "locations": [
+      { "Street": "Brucher Talsperre",
+        "HouseNumber": "-",
+        "LocationName": "Brucher Talsperre",
+        "geoData": [
+          {
+            "lat":  51.084770  ,
+            "lng": 7.548370
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "city": "Wipperfürth",
+    "Federal_State_short": "NRW",
+    "Federal_State_long": "Nordrhein Westphalen",
+    "state": "DE",
+    "postalCode": "51688",
+    "bgImg": "/image2.png",
+    "locations": [
+      { "Street": "Kirchpl",
+        "HouseNumber": "1",
+        "LocationName": "Nikolauskirche",
+        "geoData": [
+          {
+            "lat":  51.117730  ,
+            "lng": 7.397430
+          }
+        ]
+      },
+      { "Street": "Sauerlandstraße ",
+        "HouseNumber": "7",
+        "LocationName": "Villa Ohl Pulvermuseum",
+        "geoData": [
+          {
+            "lat":  51.111350  ,
+            "lng": 7.488640
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "city": "Wiehl-Test",
+    "Federal_State_short": "NRW",
+    "Federal_State_long": "Nordrhein Westphalen",
+    "state": "DE",
+    "postalCode": "51674",
+    "bgImg": "/bergisches_waldbroel-4351265.jpg",
+    "locations": [
+      { "Street": "Brucher Straße",
+        "HouseNumber": "45",
+        "LocationName": "Wiehlpark"
+
+      },
+      { "Street": "Mühlenstraße",
+        "HouseNumber": "23",
+        "LocationName": "Wasser Welt"
+
+
+      }
+    ]
+  },
+  {
+    "city": "Marienheide-Test",
+    "Federal_State_short": "NRW",
+    "Federal_State_long": "Nordrhein Westphalen",
+    "state": "DE",
+    "postalCode": "51709",
+    "bgImg": "/unnenbergturm.jpg",
+    "locations": [
+      { "Street": "Brucher Talsperre",
+        "HouseNumber": "-",
+        "LocationName": "Brucher Talsperre"
+
+      }
+    ]
+  },
+  {
+    "city": "Wipperfürth-Test",
+    "Federal_State_short": "NRW",
+    "Federal_State_long": "Nordrhein Westphalen",
+    "state": "DE",
+    "postalCode": "51688",
+    "bgImg": "/image2.png",
+    "locations": [
+      { "Street": "Kirchpl",
+        "HouseNumber": "1",
+        "LocationName": "Nikolauskirche"
+
+      },
+      { "Street": "Sauerlandstraße ",
+        "HouseNumber": "7",
+        "LocationName": "Villa Ohl Pulvermuseum"
+
+      }
+    ]
+  }
+
+
+]

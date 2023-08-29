@@ -5,6 +5,7 @@
   width: 100vw;
   height: 100vh;
   justify-content: start;
+  background: linear-gradient(rgba(255, 255, 255, 0) 60%, rgb(0, 0, 0) 86%);
 }
 .landing video {
   width: 100vw;
@@ -27,10 +28,14 @@
 .landing button {
   margin-top: auto;
   background-color: transparent;
+  border: none;
 }
 .landing button svg {
   fill: white;
   transform: rotate(-90deg);
+}
+.landing :active {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .overview {
@@ -51,6 +56,15 @@
 }
 .locationsSlider .pokeAround {
   flex: 1;
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  background-color: #e8e8e8;
 }
 
 .overlay {
@@ -81,6 +95,9 @@
   margin: 15px;
   font-size: 20px;
 }
+.big img {
+  text-align: center;
+}
 .big span {
   font-weight: bold;
   font-size: 32px;
@@ -88,6 +105,28 @@
 
 .orange {
   background-color: #EB6A0A;
+}
+
+.veryBig {
+  width: 328px;
+  height: auto;
+  top: 1104px;
+  left: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  gap: 10px;
+  margin: 15px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.veryBig img {
+  text-align: center;
+}
+.veryBig span {
+  font-weight: bold;
+  font-size: 32px;
 }
 
 .locationCard {
@@ -101,6 +140,32 @@
   bottom: 10px;
   left: 10px;
   color: white;
+}
+
+.Information {
+  height: 100%;
+  background-color: white;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+.Information .header {
+  height: 280px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.Information button {
+  align-self: center;
+}
+.Information .wrapper {
+  margin: 15px;
+}
+.Information .wrapper ul, .Information .wrapper li, .Information .wrapper p {
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+  color: black;
+  font-size: 14px;
 }
 
 h1, h2, p {
@@ -123,7 +188,7 @@ p {
   font-family: "Source Sans 3";
   font-style: italic;
   font-weight: 500;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-500italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-500italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* source-sans-3-600 - latin */
 @font-face {
@@ -131,7 +196,7 @@ p {
   font-family: "Source Sans 3";
   font-style: normal;
   font-weight: 600;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* source-sans-3-600italic - latin */
 @font-face {
@@ -139,7 +204,7 @@ p {
   font-family: "Source Sans 3";
   font-style: italic;
   font-weight: 600;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-600italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-600italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* source-sans-3-700 - latin */
 @font-face {
@@ -147,7 +212,7 @@ p {
   font-family: "Source Sans 3";
   font-style: normal;
   font-weight: 700;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* source-sans-3-700italic - latin */
 @font-face {
@@ -155,7 +220,7 @@ p {
   font-family: "Source Sans 3";
   font-style: italic;
   font-weight: 700;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-700italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-700italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* source-sans-3-800 - latin */
 @font-face {
@@ -163,7 +228,7 @@ p {
   font-family: "Source Sans 3";
   font-style: normal;
   font-weight: 800;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* source-sans-3-800italic - latin */
 @font-face {
@@ -171,7 +236,7 @@ p {
   font-family: "Source Sans 3";
   font-style: italic;
   font-weight: 800;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-800italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-800italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* source-sans-3-900 - latin */
 @font-face {
@@ -179,7 +244,7 @@ p {
   font-family: "Source Sans 3";
   font-style: normal;
   font-weight: 900;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* source-sans-3-900italic - latin */
 @font-face {
@@ -187,7 +252,7 @@ p {
   font-family: "Source Sans 3";
   font-style: italic;
   font-weight: 900;
-  src: url("public/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-900italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/source-sans-3-v9-latin/source-sans-3-v9-latin-900italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 :root {
   --button-background: dodgerblue;
@@ -196,6 +261,11 @@ p {
   --dropdown-width: 160px;
   --dropdown-background: white;
   --dropdown-color: black;
+}
+
+body {
+  font-family: "Source Sans 3", sans-serif;
+  background-color: white;
 }
 
 .fadeIn {
