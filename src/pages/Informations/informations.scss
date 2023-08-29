@@ -1,0 +1,29 @@
+.Information{
+  height: 100%;
+  background-color: white;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+
+  .header{
+    height: 280px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  button{
+    align-self: center;
+  }
+
+  .wrapper{
+    margin: 15px;
+
+    ul, li, p{
+      margin-top: 10px;
+      padding: 0;
+      list-style: none;
+      color: black;
+      font-size: 14px;
+    }
+
+  }
+}

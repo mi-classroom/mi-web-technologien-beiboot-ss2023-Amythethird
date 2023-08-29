@@ -7,6 +7,8 @@ import OverView from "./pages/overview/overview.jsx";
 import Loader from "./components/loader/Loader.jsx";
 import PokeAround from "./pages/pokeAround/pokeAround.jsx";
 import Select from "./pages/ARLebnisse/select.jsx";
+import Location from "./pages/Location/location.jsx";
+import Informations from "./pages/Informations/informations.jsx";
 
 const MarkerBased = React.lazy(() => import("./pages/webAR_markerBased.jsx"));
 //const WebAR_locationBased = React.lazy(() => import("./pages/webAR_locationBased.jsx"));
@@ -36,6 +38,8 @@ function App() {
                 <Route exact path={"/dwebtech/overview"} element={<OverView />} />
                 <Route exact path={"/dwebtech/stöbern"} element={<PokeAround />} />
                 <Route exact path={"/dwebtech/nutzen"} element={<Select />} />
+                <Route exact path={"/dwebtech/location/:location_name"} element={<Location />} />
+                <Route exact path={"/dwebtech/informations/:name"} element={<Informations />} />
                {/*
                 <Route exact path={"/dwebtech/marker"} element={<MarkerBased/>}/>
                 <Route exact path={"/dwebtech/location"} element={<LocationBased/>}/>
