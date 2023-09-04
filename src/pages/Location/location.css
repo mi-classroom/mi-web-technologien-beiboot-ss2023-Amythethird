@@ -1,0 +1,10 @@
+.Location_list {
+  height: 100%;
+}
+.Location_list ul, .Location_list li, .Location_list p {
+  color: black;
+  list-style: none;
+  padding: 0;
+}
+
+/*# sourceMappingURL=location.css.map */

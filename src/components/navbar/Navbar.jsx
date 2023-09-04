@@ -20,7 +20,7 @@ function Navbar({setName, setSoundSettings}) {
         <div className={"navbarT"}>
             <nav>
                 <li>
-                    <Link to={"/dwebtech/location"} aria-label={"location based Webar"}>
+                    <Link to={"/dwebtech/location.scss"} aria-label={"location.scss based Webar"}>
                         <FontAwesomeIcon
                         icon={faLocationDot}
                         size={"lg"}

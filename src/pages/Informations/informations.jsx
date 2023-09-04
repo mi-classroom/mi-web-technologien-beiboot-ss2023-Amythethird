@@ -1,14 +1,18 @@
 import {useParams} from "react-router-dom";
 import locations from "../../data/map.json"
 import Button from "../../components/button/button.jsx";
+import Overlay from "../../components/overlay/overlay.jsx";
 function Informations() {
     let { name } = useParams();
     let location = locations.filter(e => e.city === name)
+
     return(
-        <div className={"Information"} >
+       <>
+           <Overlay text={"Zurück zur Übersicht"} />
+           <div className={"Information"} >
                {location.map(e => (
                    <>
-                       <div className={"header"} style={{backgroundImage: `url(${e.bgImg}`}}></div>
+                       <div className={"header"} style={{backgroundImage: `url(${e.bgImg}`, backgroundSize: 'cover'}}></div>
                        <div className={"wrapper"}>
                            <h2>Informationen:</h2>
                            <ul>
@@ -27,12 +31,14 @@ function Informations() {
                            </p>
                        </div>
                        <Button text={`Alle ARLebnisse aus ${name}`} className={"big"} size={"xl"} path={`/dwebtech/location/${name}`}/>
+                       <Button text={`Alle ARLebnisse aus ${name}`} className={"big"} size={"xl"} path={`/dwebtech/location/all`}/>
                    </>
 
                ))}
 
 
-        </div>
+           </div>
+       </>
     )
 }
 

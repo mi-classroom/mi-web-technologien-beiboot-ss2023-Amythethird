@@ -5,6 +5,7 @@
 @forward "../components/overlay/overlay";
 @forward "../components/button/button";
 @forward "../components/locations/locations";
+@forward "Location/location";
 @forward "Informations/informations";
 @forward "../styles/colors";
 @forward "../styles/typographie";
@@ -21,6 +22,10 @@
 body{
   font-family: "Source Sans 3", sans-serif;
   background-color: white;
+}
+
+.wrapper{
+  margin: 20px;
 }
 
 .fadeIn {

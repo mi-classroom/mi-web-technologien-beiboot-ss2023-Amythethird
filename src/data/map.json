@@ -82,6 +82,7 @@
   },
   {
     "city": "Wiehl-Test",
+    "dev": true,
     "Federal_State_short": "NRW",
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",
@@ -103,6 +104,7 @@
   },
   {
     "city": "Marienheide-Test",
+    "dev": true,
     "Federal_State_short": "NRW",
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",
@@ -118,6 +120,7 @@
   },
   {
     "city": "Wipperfürth-Test",
+    "dev": true,
     "Federal_State_short": "NRW",
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",

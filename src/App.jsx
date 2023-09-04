@@ -40,9 +40,10 @@ function App() {
                 <Route exact path={"/dwebtech/nutzen"} element={<Select />} />
                 <Route exact path={"/dwebtech/location/:location_name"} element={<Location />} />
                 <Route exact path={"/dwebtech/informations/:name"} element={<Informations />} />
+                <Route exact path={"/dwebtech/locationbased"} element={<LocationBased/>}/>
                {/*
                 <Route exact path={"/dwebtech/marker"} element={<MarkerBased/>}/>
-                <Route exact path={"/dwebtech/location"} element={<LocationBased/>}/>
+
                 <Route exact path={"/dwebtech/test"} element={<Test/>}/>*/}
         </Routes>
     </Suspense>
