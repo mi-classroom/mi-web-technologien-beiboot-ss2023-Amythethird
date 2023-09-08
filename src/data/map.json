@@ -5,15 +5,15 @@
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",
     "postalCode": "51674",
-    "bgImg": "/bergisches_waldbroel-4351265.jpg",
+    "bgImg": "bergisches_waldbroel-4351265.jpg",
     "locations": [
       { "Street": "Brucher Straße",
         "HouseNumber": "45",
         "LocationName": "Wiehlpark",
         "geoData": [
           {
-            "lat":  50.9469101  ,
-            "lng": 7.5428709
+            "lat": 50.94830780708858 ,
+            "lng": 7.543090831687453
           }
         ]
       },
@@ -36,7 +36,7 @@
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",
     "postalCode": "51709",
-    "bgImg": "/unnenbergturm.jpg",
+    "bgImg": "unnenbergturm.jpg",
     "locations": [
       { "Street": "Brucher Talsperre",
         "HouseNumber": "-",
@@ -56,7 +56,7 @@
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",
     "postalCode": "51688",
-    "bgImg": "/image2.png",
+    "bgImg": "image2.png",
     "locations": [
       { "Street": "Kirchpl",
         "HouseNumber": "1",
@@ -87,7 +87,7 @@
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",
     "postalCode": "51674",
-    "bgImg": "/bergisches_waldbroel-4351265.jpg",
+    "bgImg": "bergisches_waldbroel-4351265.jpg",
     "locations": [
       { "Street": "Brucher Straße",
         "HouseNumber": "45",
@@ -109,7 +109,7 @@
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",
     "postalCode": "51709",
-    "bgImg": "/unnenbergturm.jpg",
+    "bgImg": "unnenbergturm.jpg",
     "locations": [
       { "Street": "Brucher Talsperre",
         "HouseNumber": "-",
@@ -125,7 +125,7 @@
     "Federal_State_long": "Nordrhein Westphalen",
     "state": "DE",
     "postalCode": "51688",
-    "bgImg": "/image2.png",
+    "bgImg": "image2.png",
     "locations": [
       { "Street": "Kirchpl",
         "HouseNumber": "1",

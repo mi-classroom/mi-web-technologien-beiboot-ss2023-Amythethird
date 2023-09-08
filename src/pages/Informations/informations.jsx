@@ -12,7 +12,7 @@ function Informations() {
            <div className={"Information"} >
                {location.map(e => (
                    <>
-                       <div className={"header"} style={{backgroundImage: `url(${e.bgImg}`, backgroundSize: 'cover'}}></div>
+                       <div className={"header"} style={{backgroundImage: `url(../${e.bgImg}`, backgroundSize: 'cover'}}></div>
                        <div className={"wrapper"}>
                            <h2>Informationen:</h2>
                            <ul>
@@ -30,8 +30,9 @@ function Informations() {
                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
                            </p>
                        </div>
-                       <Button text={`Alle ARLebnisse aus ${name}`} className={"big"} size={"xl"} path={`/dwebtech/location/${name}`}/>
-                       <Button text={`Alle ARLebnisse aus ${name}`} className={"big"} size={"xl"} path={`/dwebtech/location/all`}/>
+                       {name ?   <Button text={`Alle ARLebnisse aus ${name}`} className={"big"} size={"xl"} path={`/dwebtech/location/${name}`}/> :     <Button text={`Alle ARLebnisse aus ${name}`} className={"big"} size={"xl"} path={`/dwebtech/location/all`}/> }
+
+
                    </>
 
                ))}

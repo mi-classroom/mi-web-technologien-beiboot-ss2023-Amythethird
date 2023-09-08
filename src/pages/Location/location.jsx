@@ -8,8 +8,8 @@ function Location() {
     const navigate = useNavigate();
     let locale = locationJSON.filter(e => e.city === location_name)
     let testLocations = locationJSON.filter(test => test.dev === true)
-    const routeChange = () =>{
-        let path = `/dwebtech/locationbased`;
+    const routeChange = (locationname) => {
+        let path = `/dwebtech/locationbased/${locationname}`;
         navigate(path);
     }
 
@@ -24,7 +24,7 @@ function Location() {
                                 location_name === 'all' ?
                                     testLocations.map(test => (
                                         test.locations.map((testlocat, index) => (
-                                            <li key={index}><a onClick={routeChange} style={{cursor: 'pointer'}}><span>{testlocat.LocationName} </span><span>{` Entfernung 400m`}</span></a></li>
+                                            <li key={index}><a onClick={() => routeChange(testlocat.LocationName)} style={{cursor: 'pointer'}}><span>{testlocat.LocationName} </span><span>{` Entfernung 400m`}</span></a></li>
                                         ))
 
                                     ))

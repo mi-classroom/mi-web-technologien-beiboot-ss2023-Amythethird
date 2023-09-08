@@ -9,6 +9,7 @@ import PokeAround from "./pages/pokeAround/pokeAround.jsx";
 import Select from "./pages/ARLebnisse/select.jsx";
 import Location from "./pages/Location/location.jsx";
 import Informations from "./pages/Informations/informations.jsx";
+import eruda from 'eruda'
 
 const MarkerBased = React.lazy(() => import("./pages/webAR_markerBased.jsx"));
 //const WebAR_locationBased = React.lazy(() => import("./pages/webAR_locationBased.jsx"));
@@ -18,6 +19,7 @@ function App() {
     const location = useLocation();
     const [displayLocation, setDisplayLocation] = useState(location);
     const [transitionStage, setTransistionStage] = useState("fadeIn");
+    if(import.meta.env.DEV) eruda.init({tool: ['console']})
 
     useEffect(() => {
         if (location !== displayLocation) setTransistionStage("fadeOut");
@@ -40,7 +42,7 @@ function App() {
                 <Route exact path={"/dwebtech/nutzen"} element={<Select />} />
                 <Route exact path={"/dwebtech/location/:location_name"} element={<Location />} />
                 <Route exact path={"/dwebtech/informations/:name"} element={<Informations />} />
-                <Route exact path={"/dwebtech/locationbased"} element={<LocationBased/>}/>
+                <Route exact path={"/dwebtech/locationbased/:location_name"} element={<LocationBased/>}/>
                {/*
                 <Route exact path={"/dwebtech/marker"} element={<MarkerBased/>}/>
 
