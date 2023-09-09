@@ -16,11 +16,3 @@ npm i
 innerhalb ihrer IDE ein. Nach der Installation aller Module wird mit `npm run dev` die Applikation ausgeführt.
 
 
-### Verwendete Module in diesem Projekt
-* [React](https://react.dev/learn/start-a-new-react-project)
-  * Verwendete Script-Sprache : JavaScript
-  * ESLint
-  * CSS/SASS Framework: Bootstrap
-  * React Webcam als Kamera Modul für React Applicationen
-
-
