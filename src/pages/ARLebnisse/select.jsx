@@ -11,7 +11,6 @@ function Select({ onBackClick }) {
                 <Button text={`ARlebnis via QR Code Scan starten`} option={""} className={"big orange"} size={"xl"}/>
             </div>
         </>
-
     )
 }
 

@@ -93,4 +93,30 @@ body{
 
 }
 
+.location_based{
+  .sideNav{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background-color: white;
 
+
+    ul,li {
+      list-style: none;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 20px;
+      margin: 0;
+
+
+    }
+  }
+}
+
+#error-popup{
+  display: none;
+}
+.fa-lg{
+  font-size: 2rem !important;
+}

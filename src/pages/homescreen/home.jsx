@@ -9,7 +9,7 @@ function Home() {
     return (
         <>
             <main>
-                <div className={"landing"}>
+                <div className={"landing container-fluid"}>
                     <video id={"backgroundVideoLanding"} aria-label={"Natur Video ARLebnispfade"} autoPlay muted loop>
                         <source src={"./intro-video.mp4"}/>
                     </video>

@@ -1,10 +1,14 @@
 import "./index.css"
-import * as THREE from 'three';
 import * as THREEx from '@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js';
-import {useEffect} from "react";
-import Navbar from "../components/navbar/Navbar.jsx";
+import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import locationJSON from "../data/map.json";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBars, faCirclePlay, faCube, faLocationCrosshairs, faLocationPinLock} from "@fortawesome/free-solid-svg-icons";
+import * as THREE from "three";
+import {marker} from "./marker.js";
+
+
 function LocationBased(){
     let { location_name } = useParams();
     const desiredLocationName = location_name;
@@ -26,8 +30,6 @@ function LocationBased(){
         window.open(url, '_blank');
     };
 
-
-
     useEffect(() => {
         function getCoordinates(coords){
             if(coords) {
@@ -43,7 +45,6 @@ function LocationBased(){
         function main() {
             const canvas = document.getElementById('canvas1');
             if(canvas != null){
-
 
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
@@ -96,15 +97,92 @@ function LocationBased(){
 
         }
 
-
         main();
     })
+    const [close, setClose] = useState(false)
+    const [locationBased, setLocationBased] = useState(true)
+    const closeSidebar = () => {
+        setClose(current => !current)
+    }
+    marker()
 
     return(
-        <main className={"container"}>
+        <main className={"location_based"}>
             {
-                targetLocation.lng[0] === targetLocation.lng[0] ? <>  <canvas id='canvas1' style={{backgroundColor: "black", height: "100vh", width: "100%"}}></canvas>
-                    <Navbar/></>: <button onClick={openGoogleMaps}>Zu Google Maps</button>
+                targetLocation.lng[0] === targetLocation.lng[0] ?
+                    <>
+                        {
+                            close ?
+                                <div className={"sideNav"}>
+                                    <button type="button" className={"btn "} onClick={closeSidebar} >
+                                        <FontAwesomeIcon icon={faBars} size={"lg"} style={{color: "#0080c0"}} />
+                                    </button>
+                                    <ul>
+                                        <li>
+                                            <a href={"#"} aria-label={"Start"} >
+                                                <FontAwesomeIcon
+                                                    icon={faCirclePlay}
+                                                    size={"lg"}
+                                                    style={{color: "#0080c0"}}
+                                                />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={"#"} aria-label={"Models"} data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" >
+                                                <FontAwesomeIcon
+                                                    icon={faCube}
+                                                    size={"lg"}
+                                                    style={{color: "#0080c0"}}
+                                                />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={"#"} aria-label={"Models"} onClick={() => setLocationBased(true)}  >
+                                                <FontAwesomeIcon
+                                                    icon={faLocationCrosshairs}
+                                                    size={"lg"}
+                                                    style={{color: "#0080c0"}}
+                                                />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={"#"} aria-label={"Models"} onClick={() => setLocationBased(false)}  >
+                                                <FontAwesomeIcon
+                                                    icon={faLocationPinLock}
+                                                    size={"lg"}
+                                                    style={{color: "#0080c0"}}
+                                                />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> :
+                                <button type="button" onClick={closeSidebar} className={"btn  position-absolute left-0"}><FontAwesomeIcon icon={faBars} size={"lg"} style={{color: "#0080c0"}} /></button>
+                        }
+                        {locationBased ?
+                            <canvas id='canvas1' style={{backgroundColor: "black", height: "100vh", width: "100%"}}></canvas> :
+                            <div className={"container marker"}></div>
+                        }
+                        <div style={{minHeight: "120px", position: "absolute", left: "20%", top: "12%"}}>
+                            <div className={"collapse collapse-horizontal"} id={"collapseWidthExample"}>
+                                <div className={"card card-body"} style={{width: "300px"}}>
+                                    <div className="list-group">
+                                        <a href="#" className="list-group-item list-group-item-action "
+                                           aria-current="false" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                            The current link item
+                                        </a>
+                                        <a href="#" className="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">A second link
+                                            item</a>
+                                        <a href="#" className="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">A third link
+                                            item</a>
+                                        <a href="#" className="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">A fourth link
+                                            item</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                    :
+                    <button onClick={openGoogleMaps}>Zu Google Maps</button>
             }
 
 

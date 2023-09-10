@@ -40,13 +40,8 @@
 
 .overview {
   background-image: url("../aggertalsperre.jpg_667295446.jpg");
-  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .locationsSlider {
@@ -129,16 +124,12 @@
   font-size: 32px;
 }
 
-.locationCard {
-  width: 100%;
-  background-size: cover;
-  position: relative;
-  height: 100%;
+.list-group-item {
+  border: none !important;
+  padding: 15px !important;
 }
-.locationCard p {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+.list-group-item p {
+  margin-bottom: 0;
   color: white;
 }
 
@@ -352,6 +343,29 @@ body {
 }
 .compbody {
   height: 100vh;
+}
+
+.location_based .sideNav {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 20%;
+  background-color: white;
+}
+.location_based .sideNav ul, .location_based .sideNav li {
+  list-style: none;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 20px;
+  margin: 0;
+}
+
+#error-popup {
+  display: none;
+}
+
+.fa-lg {
+  font-size: 2rem !important;
 }
 
 /*# sourceMappingURL=index.css.map */
