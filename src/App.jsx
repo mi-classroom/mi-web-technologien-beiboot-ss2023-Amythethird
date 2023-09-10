@@ -10,6 +10,7 @@ import Select from "./pages/ARLebnisse/select.jsx";
 import Location from "./pages/Location/location.jsx";
 import Informations from "./pages/Informations/informations.jsx";
 import eruda from 'eruda'
+import Arlebnis from "./pages/ARLebnis/arlebnis.jsx";
 
 const LocationBased = React.lazy(() => import("./pages/loactionBased.jsx"))
 
@@ -41,6 +42,7 @@ function App() {
                 <Route exact path={"/dwebtech/location/:location_name"} element={<Location />} />
                 <Route exact path={"/dwebtech/informations/:name"} element={<Informations />} />
                 <Route exact path={"/dwebtech/locationbased/:location_name"} element={<LocationBased/>}/>
+                <Route exact path={"/dwebtech/test/"} element={<Arlebnis/>}/>
                {/*
                 <Route exact path={"/dwebtech/marker"} element={<MarkerBased/>}/>
 

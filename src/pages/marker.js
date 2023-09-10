@@ -45,7 +45,7 @@ export function marker() {
     var arMarkerControls = new ArMarkerControls(arToolkitContext, camera,
         {
             type: "pattern",
-            patternUrl: "../pattern-marker.patt",
+            patternUrl: "/pattern-marker.patt",
             changeMatrixMode: "cameraTransformMatrix",
         });
 

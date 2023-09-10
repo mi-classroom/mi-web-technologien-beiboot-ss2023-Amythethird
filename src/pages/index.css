@@ -349,7 +349,7 @@ body {
   position: absolute;
   left: 0;
   height: 100%;
-  width: 20%;
+  width: 100px;
   background-color: white;
 }
 .location_based .sideNav ul, .location_based .sideNav li {
@@ -366,6 +366,11 @@ body {
 
 .fa-lg {
   font-size: 2rem !important;
+}
+
+#arjs-video {
+  z-index: 1 !important;
+  width: 50% !important;
 }
 
 /*# sourceMappingURL=index.css.map */

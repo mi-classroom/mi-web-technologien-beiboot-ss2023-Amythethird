@@ -12,19 +12,39 @@
         "LocationName": "Wiehlpark",
         "geoData": [
           {
-            "lat": 50.94830780708858 ,
-            "lng": 7.543090831687453
+            "lat":  51.111350  ,
+            "lng": 7.488640
+          }
+        ],
+        "event":[
+          {
+            "video": {
+              "name": "Video aus Wiehl",
+              "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            "images": {
+              "src": []
+            },
+            "audio": {
+              "src": []
+            }
           }
         ]
       },
       { "Street": "Mühlenstraße",
         "HouseNumber": "23",
         "LocationName": "Wasser Welt",
-
         "geoData": [
           {
-            "lat":  50.947190  ,
-            "lng": 7.554790
+            "lat":  51.111350  ,
+            "lng": 7.488640
+          }
+        ],
+        "event": [
+          {
+            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            "images": "",
+            "audio": ""
           }
         ]
       }
@@ -46,6 +66,13 @@
             "lat":  51.084770  ,
             "lng": 7.548370
           }
+        ],
+        "event": [
+          {
+            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            "images": "",
+            "audio": ""
+          }
         ]
       }
     ]
@@ -66,6 +93,13 @@
             "lat":  51.117730  ,
             "lng": 7.397430
           }
+        ],
+        "event": [
+          {
+            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            "images": "",
+            "audio": ""
+          }
         ]
       },
       { "Street": "Sauerlandstraße ",
@@ -75,6 +109,13 @@
           {
             "lat":  51.111350  ,
             "lng": 7.488640
+          }
+        ],
+        "event": [
+          {
+            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            "images": "",
+            "audio": ""
           }
         ]
       }
@@ -91,14 +132,43 @@
     "locations": [
       { "Street": "Brucher Straße",
         "HouseNumber": "45",
-        "LocationName": "Wiehlpark"
+        "LocationName": "Wiehlpark",
+        "geoData": [
+          {
+            "lat":  51.111350  ,
+            "lng": 7.488640
+          }
+        ],
+        "event": [
+          {
+            "video": {
+              "name": "Video aus Wiehl",
+              "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+
+          },
+            "images": "",
+            "audio": ""
+          }
+        ]
+
 
       },
       { "Street": "Mühlenstraße",
         "HouseNumber": "23",
-        "LocationName": "Wasser Welt"
-
-
+        "LocationName": "Wasser Welt",
+        "geoData": [
+          {
+            "lat":  51.111350  ,
+            "lng": 7.488640
+          }
+        ],
+        "event": [
+          {
+            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            "images": "",
+            "audio": ""
+          }
+        ]
       }
     ]
   },
@@ -113,7 +183,20 @@
     "locations": [
       { "Street": "Brucher Talsperre",
         "HouseNumber": "-",
-        "LocationName": "Brucher Talsperre"
+        "LocationName": "Brucher Talsperre",
+        "geoData": [
+          {
+            "lat":  51.111350  ,
+            "lng": 7.488640
+          }
+        ],
+        "event": [
+          {
+            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            "images": "",
+            "audio": ""
+          }
+        ]
 
       }
     ]
@@ -129,7 +212,20 @@
     "locations": [
       { "Street": "Kirchpl",
         "HouseNumber": "1",
-        "LocationName": "Nikolauskirche"
+        "LocationName": "Nikolauskirche",
+        "geoData": [
+          {
+            "lat":  51.111350  ,
+            "lng": 7.488640
+          }
+        ],
+        "event": [
+          {
+            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            "images": "",
+            "audio": ""
+          }
+        ]
 
       },
       { "Street": "Sauerlandstraße ",
