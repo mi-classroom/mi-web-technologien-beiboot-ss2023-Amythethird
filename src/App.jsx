@@ -11,8 +11,6 @@ import Location from "./pages/Location/location.jsx";
 import Informations from "./pages/Informations/informations.jsx";
 import eruda from 'eruda'
 
-const MarkerBased = React.lazy(() => import("./pages/webAR_markerBased.jsx"));
-//const WebAR_locationBased = React.lazy(() => import("./pages/webAR_locationBased.jsx"));
 const LocationBased = React.lazy(() => import("./pages/loactionBased.jsx"))
 
 function App() {
