@@ -18,15 +18,22 @@
         ],
         "event":[
           {
-            "video": {
-              "name": "Video aus Wiehl",
-              "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-            },
-            "images": {
-              "src": []
-            },
-            "audio": {
-              "src": []
+            "name":  "Video",
+            "media": {
+              "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            }
+          },
+          {
+            "name": "Audio",
+            "media": {
+              "audio": "/sound.mp3"
+            }
+          },
+          {
+            "name": "Schwert",
+            "media": {
+              "mesh": "custom",
+              "file": "GladiatorSword.glb"
             }
           }
         ]

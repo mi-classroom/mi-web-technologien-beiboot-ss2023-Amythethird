@@ -6,26 +6,35 @@ import locationJSON from "../data/map.json";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars, faCirclePlay, faCube, faLocationCrosshairs, faLocationPinLock} from "@fortawesome/free-solid-svg-icons";
 import * as THREE from "three";
-import {marker} from "./marker.js"
-import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import {ArMarkerControls, ArToolkitContext, ArToolkitSource} from "@ar-js-org/ar.js/three.js/build/ar-threex.js";
+import playAlpha from "../../public/icons/playAlpha.png"
+import pauseAlpha from "../../public/icons/pauseAlpha.png"
 
+function LocationBased() {
+    let {location_name} = useParams();
+    let canvas;
+    let scene;
+    let camera;
+    let renderer;
+    let arjs;
+    let playButton;
 
-
-function LocationBased(){
-    let { location_name } = useParams();
     const desiredLocationName = location_name;
     let geoDataForLocationName;
     let location;
-    let events;
+    let mesh;
+    let cam;
+    let deviceOrientationControls;
     let positions = {
         lat: 0,
         lng: 0
     }
-    const [event, setEvent] = useState("")
     const [close, setClose] = useState(false)
     const [locationBased, setLocationBased] = useState(true)
+    const RAYCASTER = new THREE.Raycaster();
+    const MOUSE = new THREE.Vector2();
+    let videoElement;
+    let audioElement;
+
     for (const data of locationJSON) {
         location = data.locations.find(location => location.LocationName === desiredLocationName);
         if (location) {
@@ -33,96 +42,151 @@ function LocationBased(){
             break;
         }
     }
-
-    const targetLocation = { lat: geoDataForLocationName.map(latlng => latlng.lat), lng: geoDataForLocationName.map(latlng => latlng.lng) }; // Beispielkoordinaten
+    const targetLocation = {
+        lat: geoDataForLocationName.map(latlng => latlng.lat),
+        lng: geoDataForLocationName.map(latlng => latlng.lng)
+    }; // Beispielkoordinaten
     const openGoogleMaps = () => {
         const url = `https://www.google.com/maps/dir/?api=1&destination=${targetLocation.lat},${targetLocation.lng}`;
         window.open(url, '_blank');
     };
-    let videoEvent = () =>{
-        if(event === "video") {
-            const videoElement = document.createElement('video');
-            videoElement.src = 'pfad/zum/deinem/video.mp4';
+    let getBtnTexture = (isPlaying) => {
+        return new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            alphaMap: new THREE.TextureLoader().load(isPlaying ? pauseAlpha : playAlpha),
+            alphaTest: 0.3,
+            side: THREE.DoubleSide
+        })
+    }
+
+    let canvasClick = (clickEvent) => {
+        clickEvent.preventDefault();
+        MOUSE.x = (clickEvent.clientX / renderer.domElement.clientWidth) * 2 - 1;
+        MOUSE.y = -(clickEvent.clientY / renderer.domElement.clientHeight) * 2 + 1;
+        RAYCASTER.setFromCamera(MOUSE, camera);
+        const intersects = RAYCASTER.intersectObjects(scene.children);
+        if (intersects.length > 0 && 'callback' in intersects[0].object) {
+            intersects[0].object.callback()
+        }
+    }
+    let canPlay = () => {
+        playButton = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), getBtnTexture(false));
+        mesh.add(playButton)
+        mesh.renderOrder = 0;
+        playButton.renderOrder = 1;
+        playButton.isPlaying = false
+
+        playButton.callback = () => {
+            [videoElement, audioElement].forEach(el => {
+                if (el) {
+                    if (playButton.isPlaying) el.pause()
+                    else el.play()
+                }
+            })
+            playButton.isPlaying = !playButton.isPlaying
+            playButton.material = getBtnTexture(playButton.isPlaying)
+        }
+
+        playButton.scale.multiply(new THREE.Vector3(-1, -1, -1))
+        playButton.position.y = -200
+        playButton.position.z = -1
+        main()
+    }
+    let setMesh = (event) => {
+
+        if ("video" in event) {
+            videoElement = document.createElement('video');
+            videoElement.src = event.video;
             videoElement.autoplay = true;
             videoElement.loop = true;
             videoElement.muted = true;
+            document.querySelector('.video').appendChild(videoElement);
+            videoElement.setAttribute("crossOrigin", "anonymous")
 
-            const videoTexture = new THREE.VideoTexture(videoElement);
-            const geometry = new THREE.PlaneGeometry(2, 1.5); // Ändere die Größe nach Bedarf
-            const material = new THREE.MeshBasicMaterial({map: videoTexture});
-            const plane = new THREE.Mesh(geometry, material);
+            videoElement.oncanplay = () => {
+                const videoTexture = new THREE.VideoTexture(videoElement);
+                videoTexture.minFilter = THREE.LinearFilter
+                videoTexture.magFilter = THREE.LinearFilter
+                videoTexture.colorSpace = THREE.SRGBColorSpace;
 
-            return plane
-        }else if(event === "audio"){
-            const geom = new THREE.BoxGeometry(200, 200, 200);
-            const mtl = new THREE.MeshNormalMaterial({
-                transparent: true,
-                opacity: 0.7,
-                side: THREE.DoubleSide
-            });
+                const width = videoElement.videoWidth
+                const height = videoElement.videoHeight
 
-            // Meshe´s
-            const box = new THREE.Mesh(geom, mtl);
-            return box
+                const aspectRatio = width / height
+                const size = 250;
+                const mat = new THREE.MeshBasicMaterial({color: 0xffffff, map: videoTexture});
+                const geometry = new THREE.PlaneGeometry(size * aspectRatio, size, 1.0)
+
+                mat.side = THREE.DoubleSide
+                const video = new THREE.Mesh(geometry, mat);
+                mesh = video
+                canPlay()
+            };
+        }
+        if ("audio" in event) {
+            audioElement = document.createElement('audio');
+            audioElement.src = event.audio;
+            audioElement.preload = "auto";
+            audioElement.loop = true;
+            document.querySelector('.video').appendChild(audioElement);
+            audioElement.setAttribute("crossOrigin", "anonymous")
+
+            audioElement.oncanplay = () => {
+                const size = 250;
+                const mat = new THREE.MeshBasicMaterial({color: 0xffffff, side: THREE.DoubleSide});
+                const geometry = new THREE.PlaneGeometry(size, size, 1.0)
+                mesh = new THREE.Mesh(geometry, mat);
+                canPlay()
+            };
         }
     }
+
     function main() {
-        const canvas = document.getElementById('canvas1');
-        if(canvas != null){
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
+        renderer = new THREE.WebGLRenderer({canvas: canvas});
+        arjs = new THREEx.LocationBased(scene, camera);
+        cam = new THREEx.WebcamRenderer(renderer);
+        deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
+        arjs.add(mesh, positions.lng, positions.lat + 0.005);
+        arjs.startGps()
 
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
-            const renderer = new THREE.WebGLRenderer({canvas: canvas});
 
-            const arjs = new THREEx.LocationBased(scene, camera);
-            const cam = new THREEx.WebcamRenderer(renderer);
+        requestAnimationFrame(render);
+    }
 
-
-            const orbitControls = new OrbitControls(camera, renderer.domElement);
-            const deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
-
-            navigator.geolocation.getCurrentPosition((positions) => {
-                //getCoordinates(positions.coords)
-                arjs.add(videoEvent(), positions.coords.longitude, positions.coords.latitude + 0.005);
-                arjs.startGps()
-            })
-            // eslint-disable-next-line no-inner-declarations
-
-            requestAnimationFrame(render);
-                canvas.addEventListener("touchstart", () => {
-            })
-            function render() {
-                if (canvas.width != canvas.clientWidth || canvas.height != canvas.clientHeight) {
-                    renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-                    const aspect = canvas.clientWidth / canvas.clientHeight;
-                    camera.aspect = aspect;
-                    camera.updateProjectionMatrix();
-                }
-                deviceOrientationControls.update();
-                cam.update();
-                renderer.render(scene, camera);
-                requestAnimationFrame(render);
-            }
-        }
-
+    useEffect(() => {
+        canvas = document.getElementById('canvas1');
+        canvas.addEventListener("click", canvasClick)
         const successCallback = (position) => {
             positions.lat = position.coords.latitude;
             positions.lng = position.coords.longitude;
         };
+
         const errorCallback = (error) => {
-            console.log(error);
+            console.error(error);
         };
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    }
-    useEffect(() => {
-        if(!locationBased) marker()
-        main();
+
+
     })
+
+    function render() {
+        if (canvas.width != canvas.clientWidth || canvas.height != canvas.clientHeight) {
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+            const aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.aspect = aspect;
+            camera.updateProjectionMatrix();
+        }
+        deviceOrientationControls.update();
+        cam.update();
+        renderer.render(scene, camera);
+        requestAnimationFrame(render);
+    }
     const closeSidebar = () => {
         setClose(current => !current)
     }
-
-    return(
+    return (
         <main className={"location_based"}>
             {
                 targetLocation.lng[0] === targetLocation.lng[0] ?
@@ -130,12 +194,12 @@ function LocationBased(){
                         {
                             close ?
                                 <div className={"sideNav"}>
-                                    <button type="button" className={"btn "} onClick={closeSidebar} >
-                                        <FontAwesomeIcon icon={faBars} size={"lg"} style={{color: "#0080c0"}} />
+                                    <button type="button" className={"btn "} onClick={closeSidebar}>
+                                        <FontAwesomeIcon icon={faBars} size={"lg"} style={{color: "#0080c0"}}/>
                                     </button>
                                     <ul>
                                         <li>
-                                            <a href={"#"} aria-label={"Start"} >
+                                            <a href={"#"} aria-label={"Start"}>
                                                 <FontAwesomeIcon
                                                     icon={faCirclePlay}
                                                     size={"lg"}
@@ -144,7 +208,9 @@ function LocationBased(){
                                             </a>
                                         </li>
                                         <li>
-                                            <a href={"#"} aria-label={"Models"} data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" >
+                                            <a href={"#"} aria-label={"Models"} data-bs-toggle="collapse"
+                                               data-bs-target="#collapseWidthExample" aria-expanded="false"
+                                               aria-controls="collapseWidthExample">
                                                 <FontAwesomeIcon
                                                     icon={faCube}
                                                     size={"lg"}
@@ -153,7 +219,7 @@ function LocationBased(){
                                             </a>
                                         </li>
                                         <li>
-                                            <a  aria-label={"Models"} onClick={() => setLocationBased(true)}  >
+                                            <a aria-label={"Models"} onClick={() => setLocationBased(true)}>
                                                 <FontAwesomeIcon
                                                     icon={faLocationCrosshairs}
                                                     size={"lg"}
@@ -162,7 +228,7 @@ function LocationBased(){
                                             </a>
                                         </li>
                                         <li>
-                                            <a aria-label={"Models"} onClick={() => setLocationBased(false)}  >
+                                            <a aria-label={"Models"} onClick={() => setLocationBased(false)}>
                                                 <FontAwesomeIcon
                                                     icon={faLocationPinLock}
                                                     size={"lg"}
@@ -172,54 +238,37 @@ function LocationBased(){
                                         </li>
                                     </ul>
                                 </div> :
-                                <button type="button" onClick={closeSidebar} className={"btn  position-absolute left-0"}><FontAwesomeIcon icon={faBars} size={"lg"} style={{color: "#0080c0"}} /></button>
+                                <button type="button" onClick={closeSidebar}
+                                        className={"btn  position-absolute left-0"}><FontAwesomeIcon icon={faBars}
+                                                                                                     size={"lg"}
+                                                                                                     style={{color: "#0080c0"}}/>
+                                </button>
                         }
                         {locationBased ?
                             <>
                                 <canvas id='canvas1' style={{backgroundColor: "black", height: "100vh", width: "100%"}}></canvas>
-
+                                <div className={"d-none video"}>
+                                </div>
                             </>
-                            :
-                            <div className={"container marker"}></div>
+                            : <h1>FUCK</h1>
                         }
                         <div style={{minHeight: "120px", position: "absolute", left: "20%", top: "12%"}}>
                             <div className={"collapse collapse-horizontal"} id={"collapseWidthExample"}>
                                 <div className={"card card-body"} style={{width: "300px", textAlign: "left"}}>
                                     <div className="list-group">
-                                        {location.map((location, locationIndex) => (
-                                            <div key={locationIndex}>
-                                                <h2>{location.LocationName}</h2>
+                                        {
+                                            location.event.map((e, i) => (
+                                                <a key={i} href="#"
+                                                   className="list-group-item list-group-item-action "
+                                                   aria-current="false" data-bs-toggle="collapse"
+                                                   data-bs-target="#collapseWidthExample" aria-expanded="false"
+                                                   aria-controls="collapseWidthExample"
+                                                   onClick={() => setMesh(e.media)}>
+                                                    {e.name}
+                                                </a>
+                                            ))
+                                        }
 
-                                                {/* Video */}
-                                                {location.event && location.event.video && (
-                                                    <video controls>
-                                                        <source src={location.event.video.src} type="video/mp4" />
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                )}
-
-                                                {/* Audio */}
-                                                {location.event && location.event.audio && (
-                                                    <audio controls>
-                                                        <source src={location.event.audio.src} type="audio/mpeg" />
-                                                        Your browser does not support the audio tag.
-                                                    </audio>
-                                                )}
-
-                                                {/* Images */}
-                                                {location.event && location.event.images && location.event.images.src.length > 0 && (
-                                                    <div>
-                                                        {location.event.images.src.map((imageSrc, imgIndex) => (
-                                                            <img key={imgIndex} src={imageSrc} alt={`Image ${imgIndex}`} />
-                                                        ))}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        ))}
-                                        {/*<a key={i} href="#" className="list-group-item list-group-item-action "
-                                            aria-current="false" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" >
-                                            {e.video}
-                                        </a>*/}
                                     </div>
                                 </div>
                             </div>
@@ -233,5 +282,6 @@ function LocationBased(){
         </main>
     )
 }
+
 
 export default LocationBased
