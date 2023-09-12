@@ -7,12 +7,12 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 ## Live ansicht
 Der Service wurde auf www.web102.in-p.de/dwebtech deployt.
 
-## Installation
+## Wissenswertes
 
-Für die Installation aller unten geben Sie in die Konsole 
-````
-npm i 
-````
-innerhalb ihrer IDE ein. Nach der Installation aller Module wird mit `npm run dev` die Applikation ausgeführt.
+Im [Wiki](https://github.com/mi-classroom/mi-web-technologien-beiboot-ss2023-Amythethird/wiki) werden alle notwendigen Informationen für Sie bereitgestellt.
+
+# Updates
+
+
 
 
