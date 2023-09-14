@@ -16,6 +16,7 @@ import * as THREE from "three";
 import playAlpha from "/icons/playAlpha.png"
 import pauseAlpha from "/icons/pauseAlpha.png"
 import Arlebnis from "./ARLebnis/arlebnis.jsx";
+import Renderer from "./ARLebnis/renderer.jsx";
 
 function LocationBased() {
     let {location_name} = useParams();
@@ -273,7 +274,7 @@ function LocationBased() {
                                     <div className={"d-none video"}>
                                     </div>
                                 </>
-                                : <h1></h1>
+                                : <Renderer/>
                             }
                             <div style={{minHeight: "120px", position: "absolute", left: "20%", top: "12%"}}>
                                 <div className={"collapse collapse-horizontal"} id={"collapseWidthExample"}>

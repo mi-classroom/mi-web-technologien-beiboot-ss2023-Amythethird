@@ -283,7 +283,6 @@ p {
 
 body {
   font-family: "Source Sans 3", sans-serif;
-  background-color: white;
 }
 
 .wrapper {
@@ -352,6 +351,21 @@ main {
   top: 0;
   left: 50%;
   transform: translate(-50%, 10%);
+}
+
+#arjs-video {
+  margin: 0 !important;
+  width: 250px !important;
+  z-index: 0;
+}
+
+#arjs-video:nth-child(2) {
+  display: none;
+}
+
+.marker {
+  margin: 0 !important;
+  width: 500px !important;
 }
 
 /*# sourceMappingURL=index.css.map */

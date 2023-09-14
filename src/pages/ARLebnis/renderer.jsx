@@ -101,7 +101,7 @@ function Renderer(){
     }, []);
 
     return(
-        <canvas className={"marker"}></canvas>
+        <canvas className={"marker"} ></canvas>
     )
 }
 
