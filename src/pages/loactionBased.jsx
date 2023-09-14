@@ -4,10 +4,19 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import locationJSON from "../data/map.json";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars, faCirclePlay, faCube, faLocationCrosshairs, faLocationPinLock} from "@fortawesome/free-solid-svg-icons";
+import {
+    faBars,
+    faCirclePlay,
+    faCube,
+    faLocationCrosshairs,
+    faLocationPinLock,
+    faCode
+} from "@fortawesome/free-solid-svg-icons";
 import * as THREE from "three";
-import playAlpha from "../../public/icons/playAlpha.png"
-import pauseAlpha from "../../public/icons/pauseAlpha.png"
+import playAlpha from "/icons/playAlpha.png"
+import pauseAlpha from "/icons/pauseAlpha.png"
+import Arlebnis from "./ARLebnis/arlebnis.jsx";
+import Renderer from "./ARLebnis/renderer.jsx";
 
 function LocationBased() {
     let {location_name} = useParams();
@@ -17,6 +26,7 @@ function LocationBased() {
     let renderer;
     let arjs;
     let playButton;
+    let setup;
 
     const desiredLocationName = location_name;
     let geoDataForLocationName;
@@ -30,6 +40,7 @@ function LocationBased() {
     }
     const [close, setClose] = useState(false)
     const [locationBased, setLocationBased] = useState(true)
+    const [development, setDev] = useState(false)
     const RAYCASTER = new THREE.Raycaster();
     const MOUSE = new THREE.Vector2();
     let videoElement;
@@ -50,6 +61,7 @@ function LocationBased() {
         const url = `https://www.google.com/maps/dir/?api=1&destination=${targetLocation.lat},${targetLocation.lng}`;
         window.open(url, '_blank');
     };
+
     let getBtnTexture = (isPlaying) => {
         return new THREE.MeshBasicMaterial({
             color: 0xffffff,
@@ -58,7 +70,6 @@ function LocationBased() {
             side: THREE.DoubleSide
         })
     }
-
     let canvasClick = (clickEvent) => {
         clickEvent.preventDefault();
         MOUSE.x = (clickEvent.clientX / renderer.domElement.clientWidth) * 2 - 1;
@@ -93,7 +104,6 @@ function LocationBased() {
         main()
     }
     let setMesh = (event) => {
-
         if ("video" in event) {
             videoElement = document.createElement('video');
             videoElement.src = event.video;
@@ -140,8 +150,9 @@ function LocationBased() {
             };
         }
     }
-
     function main() {
+        canvas = document.getElementById('canvas1');
+        canvas.addEventListener("click", canvasClick)
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
         renderer = new THREE.WebGLRenderer({canvas: canvas});
@@ -150,29 +161,23 @@ function LocationBased() {
         deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
         arjs.add(mesh, positions.lng, positions.lat + 0.005);
         arjs.startGps()
-
-
         requestAnimationFrame(render);
     }
 
     useEffect(() => {
-        canvas = document.getElementById('canvas1');
-        canvas.addEventListener("click", canvasClick)
-        const successCallback = (position) => {
-            positions.lat = position.coords.latitude;
-            positions.lng = position.coords.longitude;
-        };
-
-        const errorCallback = (error) => {
-            console.error(error);
-        };
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
-
-    })
+            const successCallback = (position) => {
+                positions.lat = position.coords.latitude;
+                positions.lng = position.coords.longitude;
+            };
+            const errorCallback = (error) => {
+                console.error(error);
+            };
+            navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+            console.log(positions)
+    }, )
 
     function render() {
-        if (canvas.width != canvas.clientWidth || canvas.height != canvas.clientHeight) {
+        if (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) {
             renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
             const aspect = canvas.clientWidth / canvas.clientHeight;
             camera.aspect = aspect;
@@ -183,102 +188,122 @@ function LocationBased() {
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     }
-    const closeSidebar = () => {
-        setClose(current => !current)
-    }
     return (
-        <main className={"location_based"}>
-            {
-                targetLocation.lng[0] === targetLocation.lng[0] ?
-                    <>
-                        {
-                            close ?
-                                <div className={"sideNav"}>
-                                    <button type="button" className={"btn "} onClick={closeSidebar}>
-                                        <FontAwesomeIcon icon={faBars} size={"lg"} style={{color: "#0080c0"}}/>
-                                    </button>
-                                    <ul>
-                                        <li>
-                                            <a href={"#"} aria-label={"Start"}>
-                                                <FontAwesomeIcon
-                                                    icon={faCirclePlay}
-                                                    size={"lg"}
-                                                    style={{color: "#0080c0"}}
-                                                />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href={"#"} aria-label={"Models"} data-bs-toggle="collapse"
-                                               data-bs-target="#collapseWidthExample" aria-expanded="false"
-                                               aria-controls="collapseWidthExample">
-                                                <FontAwesomeIcon
-                                                    icon={faCube}
-                                                    size={"lg"}
-                                                    style={{color: "#0080c0"}}
-                                                />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label={"Models"} onClick={() => setLocationBased(true)}>
-                                                <FontAwesomeIcon
-                                                    icon={faLocationCrosshairs}
-                                                    size={"lg"}
-                                                    style={{color: "#0080c0"}}
-                                                />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label={"Models"} onClick={() => setLocationBased(false)}>
-                                                <FontAwesomeIcon
-                                                    icon={faLocationPinLock}
-                                                    size={"lg"}
-                                                    style={{color: "#0080c0"}}
-                                                />
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div> :
-                                <button type="button" onClick={closeSidebar}
-                                        className={"btn  position-absolute left-0"}><FontAwesomeIcon icon={faBars}
-                                                                                                     size={"lg"}
-                                                                                                     style={{color: "#0080c0"}}/>
-                                </button>
-                        }
-                        {locationBased ?
-                            <>
-                                <canvas id='canvas1' style={{backgroundColor: "black", height: "100vh", width: "100%"}}></canvas>
-                                <div className={"d-none video"}>
-                                </div>
-                            </>
-                            : <h1>FUCK</h1>
-                        }
-                        <div style={{minHeight: "120px", position: "absolute", left: "20%", top: "12%"}}>
-                            <div className={"collapse collapse-horizontal"} id={"collapseWidthExample"}>
-                                <div className={"card card-body"} style={{width: "300px", textAlign: "left"}}>
-                                    <div className="list-group">
+        <main className={"location_based container-fluid d-flex flex-row"}>
+            <div className={"col-2"}>
+                {
+                    close ?
+                        <div className={`sideNav ${close ? "close" : ""}`}>
+                            <button type="button" className={"btn "} onClick={() => setClose(current => !current)}>
+                                <FontAwesomeIcon icon={faBars} size={"lg"} style={{color: "#0080c0"}}/>
+                            </button>
+                            <ul>
+                                <li>
+                                    <a href={"#"} aria-label={"Start"}>
+                                        <FontAwesomeIcon
+                                            icon={faCirclePlay}
+                                            size={"lg"}
+                                            style={{color: "#0080c0"}}
+                                        />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={"#"} aria-label={"Models"} data-bs-toggle="collapse"
+                                       data-bs-target="#collapseWidthExample" aria-expanded="false"
+                                       aria-controls="collapseWidthExample">
+                                        <FontAwesomeIcon
+                                            icon={faCube}
+                                            size={"lg"}
+                                            style={{color: "#0080c0"}}
+                                        />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a aria-label={"Models"} onClick={() => setLocationBased(true)}>
+                                        <FontAwesomeIcon
+                                            icon={faLocationCrosshairs}
+                                            size={"lg"}
+                                            style={{color: "#0080c0"}}
+                                        />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a aria-label={"Models"} onClick={() => setLocationBased(false)}>
+                                        <FontAwesomeIcon
+                                            icon={faLocationPinLock}
+                                            size={"lg"}
+                                            style={{color: "#0080c0"}}
+                                        />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a aria-label={"Models"} onClick={() => setDev(current => !current)}>
                                         {
-                                            location.event.map((e, i) => (
-                                                <a key={i} href="#"
-                                                   className="list-group-item list-group-item-action "
-                                                   aria-current="false" data-bs-toggle="collapse"
-                                                   data-bs-target="#collapseWidthExample" aria-expanded="false"
-                                                   aria-controls="collapseWidthExample"
-                                                   onClick={() => setMesh(e.media)}>
-                                                    {e.name}
-                                                </a>
-                                            ))
+                                            development ? <FontAwesomeIcon icon={faCirclePlay}
+                                                                           size={"lg"}
+                                                                           style={{color: "#0080c0"}}
+                                                /> :
+                                                <>
+                                                    <FontAwesomeIcon icon={faCode}
+                                                                     size={"lg"}
+                                                                     style={{color: "#0080c0"}}
+                                                    />
+                                                </>
+
                                         }
 
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> :
+                        <button type="button" onClick={() => setClose(current => !current)}
+                                className={"btn align-self-start"}><FontAwesomeIcon icon={faBars}
+                                                                                    size={"lg"}
+                                                                                    style={{color: "#0080c0"}}/>
+                        </button>
+                }
+            </div>
+            <div id="liveAlertPlaceholder"></div>
+            <div className={"col-10 align-self-center"}>
+                {
+                    development ?
+                        <>
+                            {locationBased ?
+                                <>
+                                    <canvas id='canvas1' style={{backgroundColor: "black", height: "100vh", width: "100%"}}></canvas>
+                                    <div className={"d-none video"}>
+                                    </div>
+                                </>
+                                : <Renderer/>
+                            }
+                            <div style={{minHeight: "120px", position: "absolute", left: "20%", top: "12%"}}>
+                                <div className={"collapse collapse-horizontal"} id={"collapseWidthExample"}>
+                                    <div className={"card card-body"} style={{width: "300px", textAlign: "left"}}>
+                                        <div className="list-group">
+                                            {
+                                                location.event.map((e, i) => (
+                                                    <a key={i} href="#"
+                                                       className="list-group-item list-group-item-action "
+                                                       aria-current="false" data-bs-toggle="collapse"
+                                                       data-bs-target="#collapseWidthExample" aria-expanded="false"
+                                                       aria-controls="collapseWidthExample"
+                                                       onClick={() => setMesh(e.media)}>
+                                                        {e.name}
+                                                    </a>
+                                                ))
+                                            }
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </>
-                    :
-                    <button onClick={openGoogleMaps}>Zu Google Maps</button>
-            }
-
-
+                        </>
+                        :
+                        <>
+                            <button type="button" onClick={openGoogleMaps} className="btn btn-secondary btn-sm">Öffne Maps</button>
+                        </>
+                }
+            </div>
         </main>
     )
 }

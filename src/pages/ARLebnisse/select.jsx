@@ -6,9 +6,10 @@ function Select({ onBackClick }) {
     return(
         <>
             <Overlay text={"Zurück"}/>
-            <div className={`select`} >
-                <Button text={`ARlebnisse in der Umgebung anzeigen`} option={""} className={"veryBig"} size={"xl"} path={`/dwebtech/location/all`} icon={'public/icons/radar.svg'}/>
-                <Button text={`ARlebnis via QR Code Scan starten`} option={""} className={"big orange"} size={"xl"}/>
+            <div className={`select container-fluid`} id={"section1"} >
+                <Button text={`ARlebnisse in der Umgebung anzeigen`} option={""} className={"veryBig"} fontColor={"white"} size={"xl"} icon={"radar"} colorIcon={"white"} path={`/dwebtech/location/all`} />
+                <Button text={`ARlebnis via QR Code Scan starten`} option={""} className={"veryBig "} fontColor={"white"} color={"orange"} icon={"qr"} colorIcon={"white"} size={"xl"} path={`/dwebtech/nutzen/qr`}/>
+                <Button text={`Ich habe keine Ahnung`} option={""} className={"veryBig "} fontColor={"black"} color={"lightgray"} icon={"help"} colorIcon={"black"} size={"xl"} />
             </div>
         </>
     )

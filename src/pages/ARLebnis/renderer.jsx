@@ -4,23 +4,22 @@ import {ArMarkerControls, ArToolkitContext, ArToolkitSource} from "@ar-js-org/ar
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 function Renderer(){
-    const containerRef = useRef();
 
-    useEffect(() => {
+    const markerBased = (containerRef) =>{
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(
-            75,
-            window.innerWidth / window.innerHeight,
+            60,
+            1.33,
             0.1,
-            1000
+            10000
         );
         scene.add(camera)
         const renderer = new THREE.WebGLRenderer({
             antialias: true,
-            alpha: true
+            alpha: true,
+            canvas: containerRef,
         });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        containerRef.current.appendChild(renderer.domElement);
         var arToolkitSource = new ArToolkitSource({
             sourceType: "webcam",
         });
@@ -31,7 +30,7 @@ function Renderer(){
             }, 2000)
         });
         var arToolkitContext = new ArToolkitContext({
-            cameraParametersUrl: "public/models/camera_para.dat",
+            cameraParametersUrl: "/models/camera_para.dat",
             detectionMode: "color_and_matrix",
             debug: true,
             matrixCodeType: '3x3',
@@ -50,7 +49,6 @@ function Renderer(){
             // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/imageSmoothingEnabled
             imageSmoothingEnabled : true,
         });
-        console.log(arToolkitContext)
         arToolkitContext.init(function () {
             camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
         });
@@ -58,7 +56,7 @@ function Renderer(){
         var arMarkerControls = new ArMarkerControls(arToolkitContext, camera,
             {
                 type: "pattern",
-                patternUrl: "public/models/pattern-marker.patt",
+                patternUrl: "/models/pattern-marker.patt",
                 changeMatrixMode: "cameraTransformMatrix",
                 size: 1,
                 // turn on/off camera smoothing
@@ -73,7 +71,7 @@ function Renderer(){
 
         scene.visible = false;
 
-        const geometry = new THREE.BoxGeometry(100, 100, 1);
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
         const material = new THREE.MeshNormalMaterial({
             transparent: true,
             opacity: 0.9,
@@ -95,10 +93,15 @@ function Renderer(){
         };
 
         animate();
+    }
+    useEffect(() => {
+        const containerRef = document.querySelector('.marker');
+        markerBased(containerRef)
+
     }, []);
 
     return(
-        <div ref={containerRef} />
+        <canvas className={"marker"} ></canvas>
     )
 }
 

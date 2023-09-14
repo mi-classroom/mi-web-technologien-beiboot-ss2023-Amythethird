@@ -1,5 +1,4 @@
 .overlay{
-  margin-bottom: auto;
   background-color: white;
   display: flex;
   align-items: center;
@@ -12,5 +11,6 @@
   p{
     max-width: 200px;
     text-align: left;
+    margin-bottom: 0;
   }
 }
