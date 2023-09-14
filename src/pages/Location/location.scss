@@ -1,7 +1,10 @@
 .Location_list{
   text-align: left;
-  .wrapper{
 
+  .wrapper{
+    h1{
+      font-weight: bold;
+    }
     ul,li,p {
       color: black;
       list-style: none;
@@ -16,6 +19,7 @@
       margin: 15px 0;
       display: flex;
       align-items: center;
+      background-color: rgba(255,255,255,0.3);
 
       a{
         margin: 0 15px;
@@ -23,6 +27,7 @@
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
+        font-weight: bold;
       }
     }
   }

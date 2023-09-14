@@ -19,21 +19,20 @@
   }
 }
 
-.orange{
-  background-color: colors.$highlight ;
+button{
+  background-color: #1a1a1a;
+
 }
 
 .veryBig{
   width: 328px;
-  height: auto;
-  top: 1104px;
-  left: 16px;
-  padding: 10px 20px;
+  height: calc(100%/2.5);
   border-radius: 4px;
   border: none;
   gap: 10px;
   margin: 15px;
   font-size: 20px;
+  font-weight: bold;
   img{
     text-align: center;
   }
@@ -41,6 +40,5 @@
     font-weight: bold;
     font-size: 32px;
   }
-  display: flex;
-  flex-direction: column;
+
 }

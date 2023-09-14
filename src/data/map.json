@@ -47,11 +47,25 @@
             "lng": 7.488640
           }
         ],
-        "event": [
+        "event":[
           {
-            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-            "images": "",
-            "audio": ""
+            "name":  "Video",
+            "media": {
+              "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            }
+          },
+          {
+            "name": "Audio",
+            "media": {
+              "audio": "../sound.mp3"
+            }
+          },
+          {
+            "name": "Schwert",
+            "media": {
+              "mesh": "custom",
+              "file": "GladiatorSword.glb"
+            }
           }
         ]
       }
@@ -74,11 +88,25 @@
             "lng": 7.548370
           }
         ],
-        "event": [
+        "event":[
           {
-            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-            "images": "",
-            "audio": ""
+            "name":  "Video",
+            "media": {
+              "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            }
+          },
+          {
+            "name": "Audio",
+            "media": {
+              "audio": "/sound.mp3"
+            }
+          },
+          {
+            "name": "Schwert",
+            "media": {
+              "mesh": "custom",
+              "file": "GladiatorSword.glb"
+            }
           }
         ]
       }
@@ -101,11 +129,25 @@
             "lng": 7.397430
           }
         ],
-        "event": [
+        "event":[
           {
-            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-            "images": "",
-            "audio": ""
+            "name":  "Video",
+            "media": {
+              "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            }
+          },
+          {
+            "name": "Audio",
+            "media": {
+              "audio": "/sound.mp3"
+            }
+          },
+          {
+            "name": "Schwert",
+            "media": {
+              "mesh": "custom",
+              "file": "GladiatorSword.glb"
+            }
           }
         ]
       },
@@ -140,40 +182,50 @@
       { "Street": "Brucher Straße",
         "HouseNumber": "45",
         "LocationName": "Wiehlpark",
-        "geoData": [
+        "event":[
           {
-            "lat":  51.111350  ,
-            "lng": 7.488640
-          }
-        ],
-        "event": [
-          {
-            "video": {
-              "name": "Video aus Wiehl",
-              "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-
+            "name":  "Video",
+            "media": {
+              "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            }
           },
-            "images": "",
-            "audio": ""
+          {
+            "name": "Audio",
+            "media": {
+              "audio": "/sound.mp3"
+            }
+          },
+          {
+            "name": "Schwert",
+            "media": {
+              "mesh": "custom",
+              "file": "GladiatorSword.glb"
+            }
           }
         ]
-
-
       },
       { "Street": "Mühlenstraße",
         "HouseNumber": "23",
         "LocationName": "Wasser Welt",
-        "geoData": [
+        "event":[
           {
-            "lat":  51.111350  ,
-            "lng": 7.488640
-          }
-        ],
-        "event": [
+            "name":  "Video",
+            "media": {
+              "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            }
+          },
           {
-            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-            "images": "",
-            "audio": ""
+            "name": "Audio",
+            "media": {
+              "audio": "/sound.mp3"
+            }
+          },
+          {
+            "name": "Schwert",
+            "media": {
+              "mesh": "custom",
+              "file": "GladiatorSword.glb"
+            }
           }
         ]
       }
@@ -191,12 +243,6 @@
       { "Street": "Brucher Talsperre",
         "HouseNumber": "-",
         "LocationName": "Brucher Talsperre",
-        "geoData": [
-          {
-            "lat":  51.111350  ,
-            "lng": 7.488640
-          }
-        ],
         "event": [
           {
             "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
@@ -220,17 +266,25 @@
       { "Street": "Kirchpl",
         "HouseNumber": "1",
         "LocationName": "Nikolauskirche",
-        "geoData": [
+        "event":[
           {
-            "lat":  51.111350  ,
-            "lng": 7.488640
-          }
-        ],
-        "event": [
+            "name":  "Video",
+            "media": {
+              "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            }
+          },
           {
-            "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-            "images": "",
-            "audio": ""
+            "name": "Audio",
+            "media": {
+              "audio": "/sound.mp3"
+            }
+          },
+          {
+            "name": "Schwert",
+            "media": {
+              "mesh": "custom",
+              "file": "GladiatorSword.glb"
+            }
           }
         ]
 
