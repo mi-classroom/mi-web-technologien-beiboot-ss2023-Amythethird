@@ -64,7 +64,8 @@
             "name": "Schwert",
             "media": {
               "mesh": "custom",
-              "file": "GladiatorSword.glb"
+              "file": "GladiatorSword.glb",
+              "animate": true
             }
           }
         ]

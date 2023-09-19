@@ -17,6 +17,7 @@ import playAlpha from "/icons/playAlpha.png"
 import pauseAlpha from "/icons/pauseAlpha.png"
 import Arlebnis from "./ARLebnis/arlebnis.jsx";
 import Renderer from "./ARLebnis/renderer.jsx";
+import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
 
 function LocationBased() {
     let {location_name} = useParams();
@@ -27,6 +28,8 @@ function LocationBased() {
     let arjs;
     let playButton;
     let setup;
+    let mixer;
+    const CLOCK = new THREE.Clock();
 
     const desiredLocationName = location_name;
     let geoDataForLocationName;
@@ -70,6 +73,17 @@ function LocationBased() {
             side: THREE.DoubleSide
         })
     }
+    async function load(url,type){
+        return new Promise((resolve, reject) => {
+            let LOADER
+            if(type === 'image') LOADER = new THREE.TextureLoader()
+            else if(type === 'gltf') LOADER = new GLTFLoader()
+            else throw "NO LOADER"
+            LOADER.load(url,data => resolve(data),progress => {
+                console.log(`${(progress.loaded / progress.total * 100).toFixed(2)} % loaded` );
+            },e => reject(e))
+        })
+    }
     let canvasClick = (clickEvent) => {
         clickEvent.preventDefault();
         MOUSE.x = (clickEvent.clientX / renderer.domElement.clientWidth) * 2 - 1;
@@ -103,7 +117,7 @@ function LocationBased() {
         playButton.position.z = -1
         main()
     }
-    let setMesh = (event) => {
+    let setMesh = async (event) =>  {
         if ("video" in event) {
             videoElement = document.createElement('video');
             videoElement.src = event.video;
@@ -149,6 +163,22 @@ function LocationBased() {
                 canPlay()
             };
         }
+        if ("mesh" in event) {
+
+            if(event.mesh === "custom"){
+                const gltf = await load(`/dwebtech/models/meshes/${event.file}`,'gltf')
+                const scale = 200
+                mesh = gltf.scene
+                mesh.scale.set(scale * mesh.scale.x, scale * mesh.scale.y, scale * mesh.scale.z)
+                mesh.rotation.y = 110
+                if(event.animate){
+                    mixer = new THREE.AnimationMixer(mesh);
+                    const action = mixer.clipAction(gltf.animations[ 0 ]);
+                    action.play();
+                }
+                main()
+            }
+        }
     }
     function main() {
         canvas = document.getElementById('canvas1');
@@ -173,7 +203,6 @@ function LocationBased() {
                 console.error(error);
             };
             navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-            console.log(positions)
     }, )
 
     function render() {
@@ -185,6 +214,7 @@ function LocationBased() {
         }
         deviceOrientationControls.update();
         cam.update();
+        if (mixer) mixer.update(CLOCK.getDelta());
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     }
